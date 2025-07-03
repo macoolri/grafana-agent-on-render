@@ -1,2 +1,18 @@
 server:
   http_listen_port: 12345
+
+metrics:
+  wal_directory: /tmp/agent/data
+  configs:
+    - name: default
+      remote_write:
+        - url: ${GRAFANA_CLOUD_PROMETHEUS_URL}
+          basic_auth:
+            username: ${GRAFANA_CLOUD_USERNAME}
+            password: ${GRAFANA_CLOUD_PASSWORD}
+      scrape_configs:
+        - job_name: 'my-node-app'
+          static_configs:
+            - targets: ['http://devops-project-api-live.internal:10000']
+          metrics_path: /metrics
+          scrape_interval: 15s
