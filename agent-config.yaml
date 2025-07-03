@@ -1,18 +1,2 @@
 server:
   http_listen_port: 12345
-
-metrics:
-  wal_directory: /tmp/agent/wal
-  configs:
-    - name: default
-      remote_write:
-        - url: https://prometheus-prod-39-prod-eu-north-0.grafana.net/api/prom/push
-          basic_auth:
-            username: 2538297
-            password: glc_eyJvIjoiMTQ3NDQ5OSIsIm4iOiJzdGFjay0xMzA3MDMxLWhtLXdyaXRlLWdyYWZhbmEtdG9rZW4iLCJrIjoiQm13aFgydDFIOTdLMjNLMDgwWjB3WWhmIiwibSI6eyJyIjoicHJvZC1ldS1ub3J0aC0wIn19
-      scrape_configs:
-        - job_name: 'my-node-app'
-          static_configs:
-            - targets: ['http://devops-project-api-live.internal:3001']
-          metrics_path: /metrics
-          scrape_interval: 15s
